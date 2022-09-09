@@ -5,6 +5,21 @@
 </head>
 <body>
     <main>
+        <nav>
+            <ul>
+              {% if user.is_authenticated %}
+              <li>
+                <a href="{% url 'logout' %}">Logout</a>
+              </li>
+              {% endif %}
+              {% if user.is_authenticated == False %}
+              <li>
+                <a href="{% url 'signup' %}">Signup</a>
+                <a href="{% url 'login' %}">Login</a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
         <h1>My Receipts</h1>
         <table>
             <thead>
