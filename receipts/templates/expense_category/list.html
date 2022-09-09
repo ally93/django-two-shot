@@ -1,28 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     <main>
-        <nav>
-            <ul>
-              {% if user.is_authenticated %}
-              <li>
-                <a href="{% url 'logout' %}">Logout</a>
-              </li>
-              {% endif %}
-              {% if user.is_authenticated == False %}
-              <li>
-                <a href="{% url 'signup' %}">Signup</a>
-                <a href="{% url 'login' %}">Login</a>
-              </li>
-              {% endif %}
-            </ul>
-          </nav>
-          <div>
-            <a href="{% url 'create_category' %}">Create Category</a>
-          </div>
         <h1>My Expense Categories</h1>
         <table>
             <thead>
@@ -41,6 +20,4 @@
             </tbody>
         </table>
     </main>
-    
-</body>
-</html>
+{% endblock content %}
