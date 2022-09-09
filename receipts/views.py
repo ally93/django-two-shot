@@ -41,3 +41,15 @@ class AccountListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         # print(ExpenseCategory.objects.all)
         return Account.objects.filter(owner=self.request.user)
+
+
+class ExpenseCategoryCreateView(LoginRequiredMixin, CreateView):
+    model = ExpenseCategory
+    template_name = "expense_category/create.html"
+    fields = ["name"]
+
+    def form_valid(self, form):
+        expense_category = form.save(commit=False)
+        expense_category.owner = self.request.user
+        expense_category.save()
+        return redirect("list_categories")
