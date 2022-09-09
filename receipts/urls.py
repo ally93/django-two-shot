@@ -5,7 +5,8 @@ from receipts.views import (
     ReceiptCreateView,
     ExpenseCategoryListView,
     AccountListView,
-    ExpenseCategoryCreateView
+    ExpenseCategoryCreateView,
+    AccountCreateView
 )
 
 urlpatterns = [
@@ -25,5 +26,10 @@ urlpatterns = [
         "categories/create/",
         ExpenseCategoryCreateView.as_view(),
         name="create_category",
+    ),
+    path(
+        "accounts/create/",
+        AccountCreateView.as_view(),
+        name="create_account",
     ),
 ]
